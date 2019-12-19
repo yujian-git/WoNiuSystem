@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Generated 2019-12-18 21:32:32 by Hibernate Tools 5.2.12.Final --><!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping auto-import="true" default-access="property" default-cascade="none" default-lazy="true">
+    <class catalog="stumanager" dynamic-insert="false" dynamic-update="false" mutable="true" name="com.woniu.pojo.User" optimistic-lock="version" polymorphism="implicit" select-before-update="false" table="user">
+        <id name="userId" type="int">
+            <column name="userId"/>
+            <generator class="identity"/>
+        </id>
+        <property generated="never" lazy="false" name="userName" optimistic-lock="true" type="string" unique="false">
+            <column length="45" name="userName" not-null="true"/>
+        </property>
+        <property generated="never" lazy="false" name="userPwd" optimistic-lock="true" type="string" unique="false">
+            <column length="45" name="userPwd" not-null="true"/>
+        </property>
+        <set embed-xml="true" fetch="select" inverse="true" lazy="true" mutable="true" name="clazzs" optimistic-lock="true" sort="unsorted" table="clazz">
+            <key on-delete="noaction">
+                <column name="userId"/>
+            </key>
+            <one-to-many class="com.woniu.pojo.Clazz" embed-xml="true" not-found="exception"/>
+        </set>
+        <set embed-xml="true" fetch="select" inverse="true" lazy="true" mutable="true" name="userRoles" optimistic-lock="true" sort="unsorted" table="user_role">
+            <key on-delete="noaction">
+                <column name="userId" not-null="true"/>
+            </key>
+            <one-to-many class="com.woniu.pojo.UserRole" embed-xml="true" not-found="exception"/>
+        </set>
+    </class>
+</hibernate-mapping>

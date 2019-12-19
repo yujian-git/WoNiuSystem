@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Generated 2019-12-18 21:32:32 by Hibernate Tools 5.2.12.Final --><!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping auto-import="true" default-access="property" default-cascade="none" default-lazy="true">
+    <class catalog="stumanager" dynamic-insert="false" dynamic-update="false" mutable="true" name="com.woniu.pojo.Scoreresult" optimistic-lock="version" polymorphism="implicit" select-before-update="false" table="scoreresult">
+        <id name="scoreResultId" type="java.lang.Integer">
+            <column name="scoreResultId"/>
+            <generator class="identity"/>
+        </id>
+        <many-to-one class="com.woniu.pojo.Clazz" embed-xml="true" fetch="select" insert="true" name="clazz" not-found="exception" optimistic-lock="true" unique="false" update="true">
+            <column name="clazzId" not-null="true"/>
+        </many-to-one>
+        <property generated="never" lazy="false" name="average" optimistic-lock="true" type="java.lang.Float" unique="false">
+            <column name="average" precision="12" scale="0"/>
+        </property>
+    </class>
+</hibernate-mapping>
